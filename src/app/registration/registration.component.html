@@ -1,0 +1,178 @@
+<div class="form-container">
+    <div class="title-container">
+      <h1>Student Registration</h1>
+    </div>
+    
+    <div class="card-layout">
+      <div class="e-card">
+        <div class="e-card-content">
+          <form [formGroup]="studentRegistrationForm" (ngSubmit)="onSubmit()">
+            <div class="e-input-section">
+              <ejs-textbox
+                placeholder="First name"
+                cssClass="e-outline"
+                floatLabelType="Auto"
+                formControlName="firstName"
+              ></ejs-textbox>
+            </div>
+            <div
+              *ngIf="(registrationFormControl.firstName.touched || submitted) 
+              && registrationFormControl.firstName.errors?.['required']"
+              class="e-error"
+            >
+              First name is required.
+            </div>
+            
+            <div class="e-input-section">
+              <ejs-textbox
+                placeholder="Last name"
+                cssClass="e-outline"
+                floatLabelType="Auto"
+                formControlName="lastName"
+              ></ejs-textbox>
+            </div>
+            <div
+              *ngIf="(registrationFormControl.lastName.touched || submitted) 
+              && registrationFormControl.lastName.errors?.['required']"
+              class="e-error"
+            >
+              Last name is required.
+            </div>
+            
+            <div class="e-input-section">
+              <ejs-textbox
+                placeholder="Email"
+                cssClass="e-outline"
+                floatLabelType="Auto"
+                formControlName="email"
+              ></ejs-textbox>
+            </div>
+            <div
+              *ngIf="(registrationFormControl.email.touched || submitted) 
+              && registrationFormControl.email.errors?.['required']"
+              class="e-error"
+            >
+              Email is required.
+            </div>
+            <div
+              *ngIf="registrationFormControl.email.touched &&
+              registrationFormControl.email.errors?.['email']"
+              class="e-error"
+            >
+              Enter a valid email address.
+            </div>
+            
+            <div class="e-input-section">
+              <ejs-textbox
+                placeholder="User Name"
+                cssClass="e-outline"
+                floatLabelType="Auto"
+                formControlName="username"
+              ></ejs-textbox>
+            </div>
+            <div
+              *ngIf="(registrationFormControl.username.touched || submitted) 
+              && registrationFormControl.username.errors?.['required']"
+              class="e-error"
+            >
+              User Name is required.
+            </div>
+            <div
+              *ngIf="registrationFormControl.username.touched &&
+              registrationFormControl.username.errors?.['userNameNotAvailable']"
+              class="e-error"
+            >
+              User Name is not available.
+            </div>
+            
+            <div class="e-input-section">
+              <ejs-textbox
+                type="password"
+                placeholder="Password"
+                cssClass="e-outline"
+                floatLabelType="Auto"
+                formControlName="password"
+              ></ejs-textbox>
+            </div>
+            <div
+              *ngIf="(registrationFormControl.password.touched || submitted) 
+              && registrationFormControl.password.errors?.['required']"
+              class="e-error"
+            >
+              Password is required.
+            </div>
+            <div
+              *ngIf="registrationFormControl.password &&
+              registrationFormControl.password.errors?.['invalidPassword']"
+              class="e-error"
+            >
+              Password should have minimum 8 characters, at least 1 uppercase
+              letter, 1 lowercase letter and 1 number.
+            </div>
+            
+            <div class="e-input-section">
+              <ejs-textbox
+                type="password"
+                placeholder="Confirm password"
+                cssClass="e-outline"
+                floatLabelType="Auto"
+                formControlName="confirmPassword"
+              ></ejs-textbox>
+            </div>
+            <div
+              *ngIf="(registrationFormControl.confirmPassword.touched || submitted) 
+              && registrationFormControl.confirmPassword.errors?.['required']"
+              class="e-error"
+            >
+              Confirm password is required.
+            </div>
+            <div
+              *ngIf="registrationFormControl.confirmPassword.touched &&
+              registrationFormControl.confirmPassword.errors?.['passwordMismatch']"
+              class="e-error"
+            >
+              Passwords does not match.
+            </div>
+            
+            <div class="e-input-section">
+              <ejs-textbox
+                type="number"
+                placeholder="Age"
+                cssClass="e-outline"
+                floatLabelType="Auto"
+                formControlName="age"
+              ></ejs-textbox>
+            </div>
+            <div
+              *ngIf="(registrationFormControl.age.touched || submitted) &&
+              registrationFormControl.age.errors?.['required']"
+              class="e-error"
+            >
+              Age is required.
+            </div>
+            <div
+              *ngIf="(registrationFormControl.age.touched || submitted) && 
+              (registrationFormControl.age.errors?.['min'] || registrationFormControl.age.errors?.['max'])"
+              class="e-error"
+            >
+              Age should be greater than 14 years and less than 25 years.
+            </div>
+            
+            <div class="e-card-actions">
+              <button type="submit" ejs-button cssClass="e-success">
+                Register
+              </button>
+              <button
+                type="reset"
+                ejs-button
+                cssClass="e-warning reset-button"
+                (click)="resetForm()"
+              >
+                Reset
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
